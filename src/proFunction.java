@@ -109,6 +109,7 @@ public class proFunction {
     }
 
 //寻找<A,*>代数系统的特殊元--------------------------------------------------------------------------
+
     /**
      * @param list a table of operations for known sets
      * @param col  a collection of elements
@@ -121,7 +122,7 @@ public class proFunction {
             for (j = 0; j < col.size(); j++) {
                 String newData_1 = get_data_By_Pr_Re(list, col.get(i).getData(), col.get(j).getData());
                 String newData_2 = get_data_By_Pr_Re(list, col.get(j).getData(), col.get(i).getData());
-                if((!Objects.equals(newData_1, col.get(j).getData())) || (!Objects.equals(newData_2, col.get(j).getData())))
+                if ((!Objects.equals(newData_1, col.get(j).getData())) || (!Objects.equals(newData_2, col.get(j).getData())))
                     break;
             }
             if (j == col.size()) {
