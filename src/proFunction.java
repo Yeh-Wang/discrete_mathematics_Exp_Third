@@ -32,6 +32,7 @@ public class proFunction {
     }
 
 //判断<A,*>代数系统的运算性质----------------------------------------------------------------------
+
     /**
      * @param list a table of operations for known sets
      * @declare 判断集合在运算*上的封闭性
@@ -120,9 +121,8 @@ public class proFunction {
             for (j = 0; j < col.size(); j++) {
                 String newData_1 = get_data_By_Pr_Re(list, col.get(i).getData(), col.get(j).getData());
                 String newData_2 = get_data_By_Pr_Re(list, col.get(j).getData(), col.get(i).getData());
-                if (!Objects.equals(newData_1, newData_2)) {
+                if((!Objects.equals(newData_1, col.get(j).getData())) || (!Objects.equals(newData_2, col.get(j).getData())))
                     break;
-                }
             }
             if (j == col.size()) {
                 IE = col.get(i).getData();
@@ -144,7 +144,7 @@ public class proFunction {
             for (j = 0; j < col.size(); j++) {
                 String newData_1 = get_data_By_Pr_Re(list, col.get(i).getData(), col.get(j).getData());
                 String newData_2 = get_data_By_Pr_Re(list, col.get(j).getData(), col.get(i).getData());
-                if ((!Objects.equals(newData_1, col.get(i).getData()))||(!Objects.equals(newData_2, col.get(i).getData()))) {
+                if ((!Objects.equals(newData_1, col.get(i).getData())) || (!Objects.equals(newData_2, col.get(i).getData()))) {
                     break;
                 }
             }
@@ -156,7 +156,7 @@ public class proFunction {
         return zero;
     }
 
-     /**
+    /**
      * @param list a table of operations for known sets
      * @param col  a collection of elements
      * @declare 判断<A, *>代数系统中集合A中每个元素是否都有逆元
@@ -181,7 +181,58 @@ public class proFunction {
         return flag;
     }
 
+//判断代数系统的类型---------------------------------------------------------------------------------
+
+    /**
+     * @param list a table of operations of known sets
+     * @param col  a collection of elements
+     * @declare 判断<A, *>代数系统是否为群
+     */
+    public boolean JudgeGroup(ArrayList<entityOperation> list, ArrayList<colEntity> col) {
+        if (JudgeClosed(list)) {
+            if (JudgeAssociative(list, col)) {
+                if (!Objects.equals(JudgeIE(list, col), " ")) {
+                    return JudgeInverse(list, col);
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param list a table of operations of known sets
+     * @param col  a collection of elements
+     * @declare 判断<A, *>代数系统是否为半群
+     */
+    public boolean JudgeSemi_Group(ArrayList<entityOperation> list, ArrayList<colEntity> col) {
+        return JudgeClosed(list) && JudgeAssociative(list, col);
+    }
+
+    /**
+     * @param list a table of operations of known sets
+     * @param col  a collection of elements
+     * @declare 判断<A, *>代数系统是否为广群
+     */
+    public boolean JudgeGroupoid(ArrayList<entityOperation> list, ArrayList<colEntity> col) {
+        return JudgeClosed(list);
+    }
+
+    /**
+     * @param list a table of operations of known sets
+     * @param col  a collection of elements
+     * @declare 判断<A, *>代数系统是否为独异点
+     */
+    public boolean JudgeMonoid(ArrayList<entityOperation> list, ArrayList<colEntity> col) {
+        return JudgeSemi_Group(list, col) && (!Objects.equals(JudgeIE(list, col), " "));
+    }
+
 //对运算表进行操作-----------------------------------------------------------------------------------
+
     /**
      * 根据前驱后继元素在运算表中寻找相对应的结果
      *
