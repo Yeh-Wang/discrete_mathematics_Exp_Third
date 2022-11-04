@@ -31,6 +31,20 @@ public class proFunction {
         return list;
     }
 
+    /**
+     * @param col    a collection of elements
+     * @param gather the string entered
+     * @declare 判断输入的集合是否合乎规则
+     */
+    public boolean JudgeInput(ArrayList<colEntity> col, String gather) {
+        if(col.size()==0){
+            return false;
+        }else if (gather.charAt(0)!='{'||gather.charAt(0)!='<'||gather.charAt(gather.length()-1)!='}'||gather.charAt(gather.length()-1)!='>'){
+            return false;
+        }
+        return true;
+    }
+
 //判断<A,*>代数系统的运算性质----------------------------------------------------------------------
 
     /**
