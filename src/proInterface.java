@@ -20,7 +20,7 @@ public class proInterface {
 //输入集合元素并进行处理--------------------------------------------------------------------------------
             System.out.println("请输入集合元素:(使用”<>“或者”{}“包裹,元素间以半角逗号分隔),(退出系统请输入-1)");
             gather = scanner.nextLine();
-            if(Objects.equals(gather, "-1")){
+            if (Objects.equals(gather, "-1")) {
                 break;
             }
             int k = 1;
@@ -32,7 +32,7 @@ public class proInterface {
                     col.add(data1);
                 }
             }
-            if(!fun.JudgeInput(col,gather)){
+            if (!fun.JudgeInput(col, gather)) {
                 System.out.println("输入的集合格式错误，请重新输入!");
                 scanner.reset();
                 continue;

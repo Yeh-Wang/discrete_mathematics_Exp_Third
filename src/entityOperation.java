@@ -4,9 +4,9 @@
  */
 
 public class entityOperation {  //创建实体存储序偶集(relation)
-    private String pr;
-    private String data;
-    private String su;
+    private String pr;  //<A,B>中A元素
+    private String data;  //AB二元运算后的值
+    private String su; //<A,B>中B元素
     public entityOperation() {pr="";data="";
         su ="";}
 
