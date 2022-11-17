@@ -1,5 +1,5 @@
 /**
- * @author :Yeh-Wang
+ * @author :Yaxin-Wang
  * @date : 2022/10/27
  */
 
@@ -7,8 +7,12 @@ public class entityOperation {  //创建实体存储序偶集(relation)
     private String pr;  //<A,B>中A元素
     private String data;  //AB二元运算后的值
     private String su; //<A,B>中B元素
-    public entityOperation() {pr="";data="";
-        su ="";}
+
+    public entityOperation() {
+        pr = "";
+        data = "";
+        su = "";
+    }
 
     public String getPr() {
         return pr;
@@ -34,8 +38,7 @@ public class entityOperation {  //创建实体存储序偶集(relation)
         this.su = su;
     }
 
-    public String toString()
-    {
+    public String toString() {
         return pr + " * " + su + " = " + data;
     }
 }
